@@ -9,8 +9,54 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  display: block;
 }
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(5, 5, 53);
+  color: #fff;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+ul.movies-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+ul.movies-wrap li {
+  padding: 5px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+ul.movies-wrap li img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+nav.header-wrap {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav.header-wrap a {
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
