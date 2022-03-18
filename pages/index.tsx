@@ -8,25 +8,9 @@ interface MovieProp {
 export default function Home({ results }: MovieProp) {
   const router = useRouter();
   const onClick = (id: string, title: string) => {
-    // router.push(`/movies/${id}`);
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title,
-        },
-      },
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
-  // const [movies, setMovies] = useState([]);
-  // useEffect(() => {
-  //   (async () => {
-  //     const { results } = await (await fetch(`/api/movies`)).json();
-  //     console.log(results);
-  //     setMovies(results);
-  //   })();
-  // }, []);
+
   return (
     <div className={styles.container}>
       <Seo title="Home | Next-App" />
@@ -37,15 +21,7 @@ export default function Home({ results }: MovieProp) {
             key={movie.id}
             onClick={() => onClick(movie.id, movie.original_title)}
           >
-            <Link
-              href={{
-                pathname: `/movies/${movie.id}`,
-                query: {
-                  title: movie.original_title,
-                },
-              }}
-              as={`/movies/${movie.id}`}
-            >
+            <Link href={`/movies/${movie.original_title}/${movie.id}`}>
               <a>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
