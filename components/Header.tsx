@@ -8,10 +8,12 @@ export default function Header() {
     <nav className="header-wrap">
       {/* <Image src="/vercel.svg" alt="logo" layout="fill" /> */}
       <Link href="/">
-        <a style={{ color: router.pathname == "/" ? "red" : "blue" }}>Home</a>
+        <a style={{ color: router.pathname == "/" ? "#fff" : "#4d657d" }}>
+          Home
+        </a>
       </Link>
       <Link href="/about">
-        <a style={{ color: router.pathname == "/about" ? "red" : "blue" }}>
+        <a style={{ color: router.pathname == "/about" ? "#fff" : "#4d657d" }}>
           About
         </a>
       </Link>

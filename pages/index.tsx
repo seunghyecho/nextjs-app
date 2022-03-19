@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Seo from "../components/Seo";
 interface MovieProp {
-  results: [];
+  results?: [];
 }
 export default function Home({ results }: MovieProp) {
   const router = useRouter();
