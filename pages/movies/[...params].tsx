@@ -1,21 +1,13 @@
 import { useRouter } from "next/router";
-interface DetailProp {
-  params: {
-    title?: string;
-    id?: string;
-  };
-}
-export default function Detail({ params }: DetailProp) {
+
+export default function Detail({ params }: any) {
   const router = useRouter();
-  const [title, id] = params || [];
-  console.log(router);
+  const [title] = params || [];
+  console.log(params);
   return (
-    <div>
-      <h4>
-        {title}
-        {id}
-      </h4>
-    </div>
+    <>
+      <h3>{title}</h3>
+    </>
   );
 }
 

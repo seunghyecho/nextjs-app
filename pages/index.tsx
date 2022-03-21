@@ -1,53 +1,33 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Contents from "../components/Contents";
+import Nav from "../components/Nav";
 import Seo from "../components/Seo";
 interface MovieProp {
-  results?: [];
+  contents?: [];
 }
-export default function Home({ results }: MovieProp) {
-  const router = useRouter();
-  console.log(results);
-  const onClick = (id: string, title: string) => {
-    router.push(`/movies/${title}/${id}`);
-  };
+export default function Home({ contents }: MovieProp) {
+  console.log("contents :", contents);
 
   return (
     <div className="container">
       <Seo title="Home | Next-App" />
-      {!results && <h4>Loading...</h4>}
-      <ul className="movies-wrap">
-        {results?.map((movie: any) => (
-          <li
-            className="movie"
-            key={movie.id}
-            onClick={() => onClick(movie.id, movie.original_title)}
-          >
-            <Link href={`/movies/${movie.original_title}/${movie.id}`}>
-              <a>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt="image"
-                />
-                <div className="flex">
-                  <h4>{movie.original_title}</h4>
-                  <span>{movie.vote_average}</span>
-                </div>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Nav />
+      <Contents contents={contents} />
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  const { results } = await (
-    await fetch(`http://localhost:3000/api/movies`)
-  ).json();
+export async function getServerSideProps(context) {
+  const menu = context.query.menu;
+  const BASE_URL = "https://api.themoviedb.org";
+  const API_KEY = process.env.API_KEY;
+
+  const res = await fetch(
+    `${BASE_URL}/3/discover/movie?api_key=${API_KEY}&language=kr&with_genres=${menu}`
+  );
+  const data = await res.json();
   return {
     props: {
-      results,
+      contents: data.results,
     },
   };
 }

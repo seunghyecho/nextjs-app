@@ -10,6 +10,10 @@ a {
   color: inherit;
   text-decoration: none;
   display: block;
+  background-color: transparent;
+}
+img {
+  width: 100%;
 }
 
 * {
@@ -43,6 +47,9 @@ ul.movies-wrap li.movie {
   align-items: center;
   cursor: pointer;
 }
+ul.movies-wrap li.movie a {
+  width: 200px;
+}
 ul.movies-wrap li.movie .flex {
   display: flex;
   align-items: center;
@@ -67,9 +74,10 @@ ul.movies-wrap li.movie:hover img {
   transform: scale(1.05) translateY(-10px);
 }
 nav.header-wrap {
+  padding: 0 10px;
   height: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -82,4 +90,34 @@ nav.header-wrap a {
   font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+ul.Gnb {
+  padding: 0 10px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+ul.Gnb li {
+  padding: 0 10px;
+  height: 50px;
+  line-height: 50px;
+}
+ul.Gnb li:hover {
+  background-color: rgba(77, 101, 125, 0.5);
+}
+ul.Gnb li a {
+  font-weight: 600;
+}
+
+.about h3 {
+  text-align: center;
+}
+
+.detail .bgWrap {
+  padding: 0 20px;
+}
+.detail .bgWrap span {
+  font-size: 12px;
 }

@@ -22,8 +22,16 @@ const nextConfig = {
         source: "/api/movies/:id",
         destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
       },
+      {
+        source: "/api/genre/movie/list",
+        destination: `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
+      },
     ];
   },
 };
 
-module.exports = nextConfig;
+module.exports = {
+  images: {
+    domains: ["image.tmdb.org"],
+  },
+};
